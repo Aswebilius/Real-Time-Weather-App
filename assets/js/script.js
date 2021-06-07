@@ -18,32 +18,35 @@ function setQuery(evt){
 }
 
 //First Fetch.
-function getSearch (query){
+function getSearch(query) {
     fetch(`${api.base}weather?q=${query}&units=imperial&APPID=${api.key}`)
-    .then(weather => {
+      .then(weather => {
         return weather.json();
-    }).then(displaySearch)
-    //.then(getCurrentWeather)
-}
+      }).then(function (weather) {
+        displaySearch(weather);
+        getCurrentWeather(weather);
+      })
+  }
 
-function saveSearch (weather){
-    localStorage.setItem(query, weather.name);
-    console.log(localStorage);
-}
-//This second fetch does not work and I need a TA's help to understand why so no UV Index or 5 Day Forecast.
-//Hi Ronnie, nothing I do to place the lat and lon from the First Fetch works. I worked with Cody but we couldn't figure out why.
-
-//function getCurrentWeather (weather){
-    //fetch(`${api.base}onecall?lat=&lon=&APPID=${api.key}`)
-    //.then(current => {
-        //return current.json();
-    //}).then(displaySearch);
-    //console.log("this function is running");
+//function saveSearch (weather){
+    //localStorage.setItem(query, weather.name);
+    //console.log(localStorage);
 //}
 
+function getCurrentWeather(weather) {
+    console.log({ weather });
+    var lat = weather.coord.lat;
+    var lon = weather.coord.lon;
+    fetch(`${api.base}onecall?lat=${lat}&lon=${lon}&APPID=${api.key}`)
+      .then(current => {
+        return current.json();
+      }).then(function(currentWeather) {
+        console.log( { currentWeather });
+      });
+  }
+
 //Generates the Search Results.
-function displaySearch(weather) {
-    console.log(weather);
+function displaySearch(weather, currentWeather) {
 
     let city = document.querySelector('.location .city');
     city.innerHTML = `${weather.name}, ${weather.sys.country}`;
@@ -75,8 +78,10 @@ function displaySearch(weather) {
     //Fetch and display the current Highs and Lows.
     let highLow = document.querySelector('.current .high-low');
     highLow.innerHTML = `${weather.main.temp_min}°F / ${weather.main.temp_max}°F`;
-    //let uvIndex = document.querySelector('.current .uv-index');
-    //uvIndex.innerHTML = `${current.uvi}`;
+    
+    //Fetch and display the UV Index...current undefined.
+    let uvIndex = document.querySelector('.current .uv-index');
+    uvIndex.innerHTML = `${currentWeather.current.uvi}`;
 }
 
 function pastSearches(){

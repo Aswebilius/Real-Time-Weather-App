@@ -146,3 +146,32 @@ main input:focus {
     border-radius: 10px 0px 10px 0px;
     background-color: rgb(114, 114, 114);
 }
+
+@media screen and (max-width: 980px) {
+    .weather-app {
+      padding-bottom: 0;
+      justify-content: center;
+      position: relative
+    }
+  
+  }
+  
+  @media screen and (max-width: 768px) {
+    .weather-app{
+      flex-shrink: 2;
+      padding-bottom: 0;
+      justify-content: center;
+      position: relative;
+    }
+  
+  }
+  
+  @media screen and (max-width: 500px) {
+
+    .weather-app {
+      flex-shrink: 2 120px;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+    }
+  }
