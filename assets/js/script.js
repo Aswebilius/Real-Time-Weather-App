@@ -17,16 +17,22 @@ function setQuery(evt){
     }
 }
 
+//First Fetch.
 function getSearch (query){
     fetch(`${api.base}weather?q=${query}&units=imperial&APPID=${api.key}`)
     .then(weather => {
-        weather = weather;
         return weather.json();
     }).then(displaySearch)
     //.then(getCurrentWeather)
 }
 
-//UV Index
+function saveSearch (weather){
+    localStorage.setItem(query, weather.name);
+    console.log(localStorage);
+}
+//This second fetch does not work and I need a TA's help to understand why so no UV Index or 5 Day Forecast.
+//Hi Ronnie, nothing I do to place the lat and lon from the First Fetch works. I worked with Cody but we couldn't figure out why.
+
 //function getCurrentWeather (weather){
     //fetch(`${api.base}onecall?lat=&lon=&APPID=${api.key}`)
     //.then(current => {
@@ -36,9 +42,8 @@ function getSearch (query){
 //}
 
 //Generates the Search Results.
-function displaySearch(weather, current) {
+function displaySearch(weather) {
     console.log(weather);
-    //console.log(current);
 
     let city = document.querySelector('.location .city');
     city.innerHTML = `${weather.name}, ${weather.sys.country}`;
@@ -48,8 +53,8 @@ function displaySearch(weather, current) {
     let date = document.querySelector('.location .date');
     date.innerHTML = dateStamp(now);
     
-    let cond = document.querySelector('.current .status');
-    cond.innerHTML = `${weather.weather.icon}`; 
+    //let cond = document.querySelector('.current .status');
+    //cond.innerHTML = `${weather.weather.icon}`; 
 
     //Fetch and display the current Temperature.
     let temp = document.querySelector('.current .temperature');
@@ -70,16 +75,16 @@ function displaySearch(weather, current) {
     //Fetch and display the current Highs and Lows.
     let highLow = document.querySelector('.current .high-low');
     highLow.innerHTML = `${weather.main.temp_min}°F / ${weather.main.temp_max}°F`;
-
     //let uvIndex = document.querySelector('.current .uv-index');
     //uvIndex.innerHTML = `${current.uvi}`;
 }
 
-function condition(){
-    if(`${weather.weather[0].icon == "02d"}`) {
-        cond.innerHTML = ""
-    }
+function pastSearches(){
+    localStorage.getItem(query)
+
 }
+
+//Creating the Date.
 function dateStamp(d) {
     let months = [
     "January", 
