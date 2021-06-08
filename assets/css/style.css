@@ -68,6 +68,11 @@ main input:focus {
     font-size: 14px;
 }
 
+.current #status {
+    image-rendering: crisp-edges;
+    width: 100px;
+    height: 100px;
+}
 .current .temperature {
     color: white;
     font-family: cursive;
@@ -118,7 +123,20 @@ main input:focus {
     display: none;
 }
 
-.current .uv-index {
+.normal {
+    color: rgb(255, 255, 255);
+    font-family: cursive;
+    font-size: 26px;
+    font-weight: 300;
+    font-style: italic;
+    border: 5px;
+    border-radius: 10px 0px 10px 0px;
+    margin-bottom: 15px;
+    text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+    
+}
+
+.favorable {
     color: rgb(46, 245, 28);
     font-family: cursive;
     font-size: 26px;
@@ -130,7 +148,7 @@ main input:focus {
     text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
 }
 
-.current .uv-warning .mild {
+ .mild {
     color: rgb(253, 154, 6);
     font-family: cursive;
     font-size: 28px;
@@ -142,8 +160,8 @@ main input:focus {
     text-shadow: 0px 4px rgba(0, 0, 0, 0.4);   
 }
 
-.current .uv-warning .severe {
-    color: rgb(151, 5, 5);
+.severe {
+    color: rgb(245, 7, 19);
     font-family: cursive;
     font-size: 30px;
     font-weight: 500;
@@ -152,6 +170,18 @@ main input:focus {
     border-radius: 10px 0px 10px 0px;
     margin-bottom: 15px;
     text-shadow: 0px 4px rgba(0, 0, 0, 0.4);   
+}
+
+.extreme {
+    color: rgb(245, 7, 146);
+    font-family: cursive;
+    font-size: 36px;
+    font-weight: 700;
+    font-style: italic;
+    border: 5px;
+    border-radius: 10px 0px 10px 0px;
+    margin-bottom: 15px;
+    
 }
 
 .forecast {

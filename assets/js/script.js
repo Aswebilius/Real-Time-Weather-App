@@ -22,8 +22,7 @@ function getSearch(query) {
     fetch(`${api.base}weather?q=${query}&units=imperial&APPID=${api.key}`)
       .then(weather => {
         return weather.json();
-      }).then(function (weather) {
-        
+      }).then(function (weather) {        
         getCurrentWeather(weather);
       })
   }
@@ -44,8 +43,8 @@ function getCurrentWeather(weather) {
       });
   }
 
-  //var weatherSearchResults = '';
-  //var currentWeatherSearchResults = '';
+  //var weatherSearchResults = [{}];
+  //var currentWeatherSearchResults = [{}];
   //function saveSearch (weather){
     //localStorage.setItem(query, weather.name);
     //localStorage.setItem(query, currentWeather)
@@ -63,12 +62,16 @@ function displaySearch(weather, currentWeather) {
     let date = document.querySelector('.location .date');
     date.innerHTML = dateStamp(now);
     
-    for(var i = 1; i <= 5; i++){
-    const cond = document.querySelector('.current .status');
-    var iconCode = `${currentWeather.daily[i].weather[0].icon}`;
-    let icon = "http://openweathermap.org/img/wn/" + iconCode;
-    cond.innerHTML = icon;
-    }
+    //Fetch and display the current Weather Icon.
+    //for(var i = 1; i <= 5; i++){
+    const cond = document.querySelector('.current #status');
+    var iconCode = `${weather.weather[0].icon}`;
+    let icon = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+    cond.classList.remove('hide');
+    cond.src = icon;
+    console.log(icon)
+    //}
+
     //Fetch and display the current Temperature.
     let temp = document.querySelector('.current .temperature');
     temp.innerHTML = `${Math.round(weather.main.temp)}<span>°F</span>`;
@@ -87,11 +90,34 @@ function displaySearch(weather, currentWeather) {
 
     //Fetch and display the current Highs and Lows.
     let highLow = document.querySelector('.current .high-low');
-    highLow.innerHTML = `${weather.main.temp_min}°F / ${weather.main.temp_max}°F`;
+    highLow.innerHTML = `${Math.round(weather.main.temp_min)}°F / ${Math.round(weather.main.temp_max)}°F`;
     
     //Fetch and display the UV Index
-    let uvIndex = document.querySelector('.current .uv-index');
-    uvIndex.innerHTML = `<span>UV Index: </span>${currentWeather.current.uvi}`
+    let uvIndex = document.querySelector('.current #uv-index');
+    var index = `${currentWeather.current.uvi}`
+    uvIndex.innerHTML = '<span>UV Index: </span>' + index;
+    if (index <= 2){
+        uvIndex.classList.remove('mild');
+        uvIndex.classList.remove('severe');
+        uvIndex.classList.remove('extreme');
+        uvIndex.classList.add('favorable');
+    } if (index >= 2 &&  index <= 5){
+        uvIndex.classList.remove('severe');
+        uvIndex.classList.remove('extreme');
+        uvIndex.classList.remove('favorable');
+        uvIndex.classList.add('mild');
+    } if (index >= 5 && index <= 8) {
+        uvIndex.classList.remove('mild');
+        uvIndex.classList.remove('extreme');
+        uvIndex.classList.remove('favorable');
+        uvIndex.classList.add('severe');
+    } if (index >= 8 && index <= 10){
+        uvIndex.classList.remove('mild');
+        uvIndex.classList.remove('severe');
+        uvIndex.classList.remove('favorable');
+        uvIndex.classList.add('extreme');
+    }
+
     //uvIndex.innerHTML.remove('.hide');
     //uvIndex.innerHTML.add(uvi) = `UV Index: ${currentWeather.current.uvi}`;
 }

@@ -19,26 +19,24 @@
                 <div class="date"></div>
             </section>
             <section class="current">
-                <div class="status"></div>
+                <img id="status" class="hide">
                 <div class="temperature"></div>
                 <div class="humidity"></div>
                 <div class="weather"></div>
                 <div class="wind-speed"></div>
                 <div class="high-low"></div>
-                <div class="uv-index"></div>
+                <div id="uv-index" class="normal"></div>
+                <button id="past-searches" onclick= pastSearches()>Past Searches</button>
             </section>
-<!--This Section is currently under maintenance and requires assistance from a TA-->
-            <!--<section class="forecast">
+            <section class="forecast">
                 <ul class="forecast-cards">
-                    <li id=""></li>
-                    <li id=""> </li>
-                    <li id=""></li>
-                    <li></li>
-                    <li></li>
+                    <li class="day-one"></li>
+                    <li class="day-two"> </li>
+                    <li class="day-three"></li>
+                    <li class="day-four"></li>
+                    <li class="day-five"></li>
                 </ul>
-            </section>-->
-
-            <button id="past-searches" onclick= pastSearches()>Past Searches</button>
+            </section>
         </main>
     </div>
     <script src="./assets/js/script.js"></script>
