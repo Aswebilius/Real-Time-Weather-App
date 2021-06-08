@@ -114,8 +114,24 @@ main input:focus {
     text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
 }
 
+.current .hide {
+    display: none;
+}
+
 .current .uv-index {
-    color: rgb(255, 255, 255);
+    color: rgb(46, 245, 28);
+    font-family: cursive;
+    font-size: 26px;
+    font-weight: 300;
+    font-style: italic;
+    border: 5px;
+    border-radius: 10px 0px 10px 0px;
+    margin-bottom: 15px;
+    text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.current .uv-warning .mild {
+    color: rgb(253, 154, 6);
     font-family: cursive;
     font-size: 28px;
     font-weight: 400;
@@ -123,7 +139,19 @@ main input:focus {
     border: 5px;
     border-radius: 10px 0px 10px 0px;
     margin-bottom: 15px;
-    text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: 0px 4px rgba(0, 0, 0, 0.4);   
+}
+
+.current .uv-warning .severe {
+    color: rgb(151, 5, 5);
+    font-family: cursive;
+    font-size: 30px;
+    font-weight: 500;
+    font-style: italic;
+    border: 5px;
+    border-radius: 10px 0px 10px 0px;
+    margin-bottom: 15px;
+    text-shadow: 0px 4px rgba(0, 0, 0, 0.4);   
 }
 
 .forecast {
@@ -157,21 +185,25 @@ main input:focus {
   }
   
   @media screen and (max-width: 768px) {
-    .weather-app{
+    body {
       flex-shrink: 2;
       padding-bottom: 0;
       justify-content: center;
       position: relative;
     }
+
+
   
   }
   
   @media screen and (max-width: 500px) {
 
-    .weather-app {
+    body {
       flex-shrink: 2 120px;
       justify-content: center;
       position: relative;
       width: 100%;
     }
+
+
   }

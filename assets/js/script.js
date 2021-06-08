@@ -23,16 +23,12 @@ function getSearch(query) {
       .then(weather => {
         return weather.json();
       }).then(function (weather) {
-        displaySearch(weather);
+        
         getCurrentWeather(weather);
       })
   }
 
-//function saveSearch (weather){
-    //localStorage.setItem(query, weather.name);
-    //console.log(localStorage);
-//}
-
+//Second Fetch.
 function getCurrentWeather(weather) {
     console.log({ weather });
     var lat = weather.coord.lat;
@@ -42,8 +38,19 @@ function getCurrentWeather(weather) {
         return current.json();
       }).then(function(currentWeather) {
         console.log( { currentWeather });
+        displaySearch(weather, currentWeather);
+        //uvWarning();
+
       });
   }
+
+  //var weatherSearchResults = '';
+  //var currentWeatherSearchResults = '';
+  //function saveSearch (weather){
+    //localStorage.setItem(query, weather.name);
+    //localStorage.setItem(query, currentWeather)
+    //console.log(localStorage);
+//}
 
 //Generates the Search Results.
 function displaySearch(weather, currentWeather) {
@@ -56,9 +63,12 @@ function displaySearch(weather, currentWeather) {
     let date = document.querySelector('.location .date');
     date.innerHTML = dateStamp(now);
     
-    //let cond = document.querySelector('.current .status');
-    //cond.innerHTML = `${weather.weather.icon}`; 
-
+    for(var i = 1; i <= 5; i++){
+    const cond = document.querySelector('.current .status');
+    var iconCode = `${currentWeather.daily[i].weather[0].icon}`;
+    let icon = "http://openweathermap.org/img/wn/" + iconCode;
+    cond.innerHTML = icon;
+    }
     //Fetch and display the current Temperature.
     let temp = document.querySelector('.current .temperature');
     temp.innerHTML = `${Math.round(weather.main.temp)}<span>°F</span>`;
@@ -79,13 +89,18 @@ function displaySearch(weather, currentWeather) {
     let highLow = document.querySelector('.current .high-low');
     highLow.innerHTML = `${weather.main.temp_min}°F / ${weather.main.temp_max}°F`;
     
-    //Fetch and display the UV Index...current undefined.
+    //Fetch and display the UV Index
     let uvIndex = document.querySelector('.current .uv-index');
-    uvIndex.innerHTML = `${currentWeather.current.uvi}`;
+    uvIndex.innerHTML = `<span>UV Index: </span>${currentWeather.current.uvi}`
+    //uvIndex.innerHTML.remove('.hide');
+    //uvIndex.innerHTML.add(uvi) = `UV Index: ${currentWeather.current.uvi}`;
 }
 
+
+
 function pastSearches(){
-    localStorage.getItem(query)
+    localStorage.getItem(query);
+    console.log(getSearch)
 
 }
 
