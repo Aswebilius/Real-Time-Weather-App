@@ -43,26 +43,18 @@ function getCurrentWeather(weather) {
       });
   }
 
-  //var weatherSearchResults = [{}];
-  //var currentWeatherSearchResults = [{}];
-  //function saveSearch (weather){
-    //localStorage.setItem(query, weather.name);
-    //localStorage.setItem(query, currentWeather)
-    //console.log(localStorage);
-//}
-
 //Generates the Search Results.
 function displaySearch(weather, currentWeather) {
 
     let city = document.querySelector('.location .city');
     city.innerHTML = `${weather.name}, ${weather.sys.country}`;
 
-    //Fetch and display the current Date.
+    //Fetch and displays the current Date.
     let now = new Date();
     let date = document.querySelector('.location .date');
     date.innerHTML = dateStamp(now);
     
-    //Fetch and display the current Weather Icon.
+    //Fetch and displays the current Weather Icon.
     //for(var i = 1; i <= 5; i++){
     const cond = document.querySelector('.current #status');
     var iconCode = `${weather.weather[0].icon}`;
@@ -72,27 +64,27 @@ function displaySearch(weather, currentWeather) {
     console.log(icon)
     //}
 
-    //Fetch and display the current Temperature.
+    //Fetch and displays the current Temperature.
     let temp = document.querySelector('.current .temperature');
     temp.innerHTML = `${Math.round(weather.main.temp)}<span>°F</span>`;
 
-    //Fetch and display the current Humidity.
+    //Fetch and displays the current Humidity.
     let hum = document.querySelector('.current .humidity');
     hum.innerHTML = `${Math.round(weather.main.humidity)}<span>% Humidity</span>`;
 
-    //Fetch and display the current Weather.
+    //Fetch and displays the current Weather.
     let weather_el = document.querySelector('.current .weather');
     weather_el.innerHTML = weather.weather[0].main;
 
-    //Fetch and display the current Wind Speed.
+    //Fetch and displays the current Wind Speed.
     let wind_el = document.querySelector('.current .wind-speed');
     wind_el.innerHTML = `${Math.round(weather.wind.speed)}<span> MPH</span>`;
 
-    //Fetch and display the current Highs and Lows.
+    //Fetch and displays the current Highs and Lows.
     let highLow = document.querySelector('.current .high-low');
     highLow.innerHTML = `${Math.round(weather.main.temp_min)}°F / ${Math.round(weather.main.temp_max)}°F`;
     
-    //Fetch and display the UV Index
+    //Fetch and displays the UV Index and warns the User.
     let uvIndex = document.querySelector('.current #uv-index');
     var index = `${currentWeather.current.uvi}`
     uvIndex.innerHTML = '<span>UV Index: </span>' + index;
@@ -124,11 +116,24 @@ function displaySearch(weather, currentWeather) {
 
 
 
-function pastSearches(){
-    localStorage.getItem(query);
-    console.log(getSearch)
+//var currentWeatherSearchResults = [{}];
+//function saveSearch (weather, currentWeather){
+    //var weatherSearchResults = [{
+        //city: weather.name,
+        //country: weather.sys.country,
+        //status: icon,
+        //temperature: `${Math.round(weather.main.temp)}<span>°F</span>`
+    //}];
+  //localStorage.setItem(saveSearch(), weatherSearchResults);
+  //localStorage.setItem(query, currentWeather)
+  //console.log(localStorage);
+//}
 
-}
+//function pastSearches() {
+    //localStorage.getItem(saveSearch(), weatherSearchResults);
+    //console.log(getSearch)
+
+//}
 
 //Creating the Date.
 function dateStamp(d) {
