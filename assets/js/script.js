@@ -110,8 +110,7 @@ function displaySearch(weather, currentWeather) {
         uvIndex.classList.add('extreme');
     }
 
-    //uvIndex.innerHTML.remove('.hide');
-    //uvIndex.innerHTML.add(uvi) = `UV Index: ${currentWeather.current.uvi}`;
+    
 }
 
 
