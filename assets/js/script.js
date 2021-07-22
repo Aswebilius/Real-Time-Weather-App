@@ -49,7 +49,7 @@ function displaySearch(weather, currentWeather) {
     let city = document.querySelector('.location .city');
     city.innerHTML = `${weather.name}, ${weather.sys.country}`;
 
-    //Fetch and displays the current Date.
+    //Fetch and displays the current Date and Time.
     let now = new Date();
     let date = document.querySelector('.location .date');
     date.innerHTML = dateStamp(now);

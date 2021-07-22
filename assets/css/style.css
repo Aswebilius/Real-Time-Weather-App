@@ -75,7 +75,7 @@ main input:focus {
 }
 .current .temperature {
     color: white;
-    font-family: cursive;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 100px;
     font-weight: 700;
     margin: 30px 0px;
@@ -84,7 +84,7 @@ main input:focus {
 
 .current .humidity {
     color: white;
-    font-family: cursive;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 28px;
     font-weight: 600;
     font-style: italic;
@@ -94,7 +94,7 @@ main input:focus {
 
 .current .weather {
     color: white;
-    font-family: cursive;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 28px;
     font-weight: 400;
     font-style: italic;
@@ -104,7 +104,7 @@ main input:focus {
 
 .current .wind-speed{
     color: white;
-    font-family: cursive;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 24px;
     font-weight: 500;
     margin-bottom: 15px;
@@ -113,7 +113,7 @@ main input:focus {
 
 .current .high-low{
     color: white;
-    font-family: cursive;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 24px;
     font-weight: 400px;
     text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
@@ -125,7 +125,7 @@ main input:focus {
 
 .normal {
     color: rgb(255, 255, 255);
-    font-family: cursive;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 26px;
     font-weight: 300;
     font-style: italic;
@@ -138,7 +138,7 @@ main input:focus {
 
 .favorable {
     color: rgb(46, 245, 28);
-    font-family: cursive;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 26px;
     font-weight: 300;
     font-style: italic;
